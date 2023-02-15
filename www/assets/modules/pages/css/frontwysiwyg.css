@@ -1,0 +1,89 @@
+#RestoreZone div {
+    width: 100%;
+}
+
+#RestoreZone textarea {
+    width: 100%;
+}
+
+
+#RestoreZone .dinamic-block {
+    width: 100%;
+    border: 1px solid #f1f2f7;
+}
+
+#RestoreZone .dinamic-block-head {
+    width: 100%;
+    background-color: #f1f2f7;
+
+}
+
+#RestoreZone .dinamic-block-head i {
+    display: block;
+    float: right;
+    cursor: pointer;
+}
+
+#RestoreZone .dinamic-block-content {
+    width: 100%;
+    padding: 3px 15px;
+}
+#RestoreZone textarea.dinamic-block-content {
+    padding: 0px;
+}
+#ContentZone .save-btn {
+    display: flex;
+
+    z-index: 999999;
+    position: fixed;
+    bottom: 0px;
+    height: 35px;
+    background-color: #3e3f3a;
+    color: white;
+    width: 100%;
+    padding: 2px 0px;
+    margin: 0;
+    text-align: center;
+    left: 0;
+}
+
+#ContentZone .save-btn button {
+    background-color: #78cd51;
+    width: 50%;
+    height: 31px;
+    margin-top: 0px;
+    margin-left: 5px;
+    border-radius: 2px;
+    border: none;
+}
+#ContentZone .save-btn button:hover{
+    background-color: #539d33;
+}
+
+#ContentZone .save-btn button:hover {
+    color: white;
+}
+#ContentZone .btn {
+    background-color: #e8c404;
+    padding: 3px 15px;
+    cursor: pointer;
+    border-radius: 2px;
+    font-size: 12px;
+}
+
+#ContentZone .panel {
+    border: 1px solid #f1f2f7;
+    overflow: auto;
+}
+
+#ContentZone .panel-heading {
+    padding: 11px 15px;
+    background-color: #f1f2f7;
+    text-transform: uppercase;
+}
+
+#ContentZone .btn:hover {
+    background-color: #373008;
+    color: white;
+}
+#ContentZone a.btn { text-decoration: none; text-transform: uppercase;}

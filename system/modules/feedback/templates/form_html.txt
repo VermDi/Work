@@ -1,0 +1,22 @@
+<p>&nbsp;&lt;form class="form-horizontal" method="<strong>POST</strong>" action="<strong>/feedback/send</strong>"&gt;<br />
+    &lt;fieldset&gt;<br />
+    &lt;legend&gt;<?=$form->name;?>&lt;/legend&gt;<br />
+
+        <?foreach ($fields as $field): ?>
+
+            &lt;div class="form-group"&gt;<br />
+                &lt;label for="name" class="col-sm-2 control-label"&gt;<strong><?=$field->name?></strong>&lt;/label&gt;<br />
+                &lt;div class="col-sm-10"&gt;<br />
+
+                &lt;input type="text" class="form-control" id="name" name="<strong><?=$field->name_in_form?></strong>"&gt;<br />
+                &lt;input type="hidden" name="<strong>form_id</strong>" value="<strong><?=$form->id?></strong>"&gt; <br />
+                &lt;input type="hidden" name="<strong>redirect</strong>" value="<strong>/news/</strong>"&gt;<br />
+
+            &lt;/div&gt;<br />
+        <?endforeach?>
+       &lt;input type="hidden" name="csrf_token" value="<?= $php_str ?>"&gt;<br />
+    &lt;/fieldset&gt;<br />
+    &lt;div class="form-group"&gt;<br />
+        &lt;button type="submit" class="btn btn-success pull-right"&gt;SEND&lt;/button&gt;<br />
+    &lt;/div&gt;<br />
+&lt;/form&gt;</p>

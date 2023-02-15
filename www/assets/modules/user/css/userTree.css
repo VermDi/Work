@@ -1,0 +1,45 @@
+.tree-left{
+    padding: 5px;
+    border: 1px dotted lightgrey;
+    float: left;
+    width: 20%;
+    min-height: 300px;
+}
+
+.tree-right{
+    padding: 5px;
+    border: 1px dotted lightgrey;
+    float: right;
+    width: 78%;
+    margin-left: 10px;
+    min-height: 300px;
+}
+.user-info{
+    position: relative;
+}
+
+.user-info div{
+    margin-bottom: 5px;
+}
+
+.user-info div span{
+    font-weight: bold;
+}
+
+.user-info .blocked{
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.edit-user{
+    padding-left: 10px;
+    width: 24px;
+    height: 24px;
+    line-height:24px;
+}
+
+#mbody{
+    min-height: 320px;
+}
+

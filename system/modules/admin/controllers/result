@@ -1,0 +1,103 @@
+<div>D:\OpenServer\domains\mind-cms\system\modules\admin\controllers\Index.php<br>Позиция: <span style='color:red;'>2855</span><blockquote><code>or::GET_MATCH);
+        if (file_exists(__DIR__ . DIRECTORY_SEPARATOR . 'result')) {
+            @unlink(__DIR__ . DIRECTORY_SEPARATOR . 'result');
+        }
+        $count = 0;
+        $badCodes = ['eval(', 'eval ', '$GLOBALS[\'', '\x5a\x2c\x7a'];
+        foreach ($Regex as $file) {
+            $content = file_get_contents($file[0]);
+            foreach ($badCodes as $code) {
+                if (</code></blockquote> </div>
+<div>D:\OpenServer\domains\mind-cms\system\modules\block\models\Block.php<br>Позиция: <span style='color:red;'>3871</span><blockquote><code>>" : "";
+                } else {
+                    $trans[$value] = isset($replace[$matches[1][$i]]) ? $replace[$matches[1][$i]] : "";
+                }
+                ob_start();
+                eval("?>" . $trans[$value] . "<?");
+                $trans[$value] = ob_get_contents();
+                ob_end_clean();
+            }
+            $html = strtr($html, $trans);
+        }
+        if (cl</code></blockquote> </div>
+<div>D:\OpenServer\domains\mind-cms\system\modules\exim\controllers\Index.php<br>Позиция: <span style='color:red;'>16220</span><blockquote><code>oStr);
+                        $versionInfoStr = str_replace("<?", "", $versionInfoStr);
+                        $versionInfoStr = str_replace("return", "", $versionInfoStr);
+
+                        eval("\$versionInfoStr = $versionInfoStr;");
+                        if (isset($versionInfoStr['version'])) {
+                            $versionInfoArr = $versionInfoStr;
+                        }
+ </code></blockquote> </div>
+<div>D:\OpenServer\domains\mind-cms\system\src\vendor\composer\autoload_real.php<br>Позиция: <span style='color:red;'>2252</span><blockquote><code>e6a090b97268885b81706946be45f3073($fileIdentifier, $file);
+        }
+
+        return $loader;
+    }
+}
+
+function composerRequire6a090b97268885b81706946be45f3073($fileIdentifier, $file)
+{
+    if (empty($GLOBALS['__composer_autoload_files'][$fileIdentifier])) {
+        require $file;
+
+        $GLOBALS['__composer_autoload_files'][$fileIdentifier] = true;
+    }
+}
+</code></blockquote> </div>
+<div>D:\OpenServer\domains\mind-cms\system\src\vendor\symfony\var-dumper\Tests\Caster\CasterTest.php<br>Позиция: <span style='color:red;'>4546</span><blockquote><code>lse,
+                ),
+                array('public', 'empty'),
+            ),
+        );
+    }
+
+    /**
+     * @requires PHP 7.0
+     */
+    public function testAnonymousClass()
+    {
+        $c = eval('return new class extends stdClass { private $foo = "foo"; };');
+
+        $this->assertDumpMatchesFormat(
+            <<<'EOTXT'
+stdClass@anonymous {
+  -foo: "foo"
+}
+EOTXT
+            , $c
+      </code></blockquote> </div>
+<div>D:\OpenServer\domains\mind-cms\system\src\vendor\symfony\var-dumper\Tests\Caster\ReflectionCasterTest.php<br>Позиция: <span style='color:red;'>2265</span><blockquote><code>Fixtures\NotLoadableClass"
+  default: null
+}
+EOTXT
+            , $var
+        );
+    }
+
+    /**
+     * @requires PHP 7.0
+     */
+    public function testReflectionParameterScalar()
+    {
+        $f = eval('return function (int $a) {};');
+        $var = new \ReflectionParameter($f, 0);
+
+        $this->assertDumpMatchesFormat(
+            <<<'EOTXT'
+ReflectionParameter {
+  +name: "a"
+  position: 0
+ </code></blockquote> </div>
+<div>D:\OpenServer\domains\mind-cms\system\src\vendor\symfony\var-dumper\Tests\Dumper\CliDumperTest.php<br>Позиция: <span style='color:red;'>7035</span><blockquote><code>       ':stream' => function ($res, $a) {
+                unset($a['wrapper_data']);
+
+                return $a;
+            },
+        ));
+        $cloner->addCasters(array(
+            ':stream' => eval('return function () use ($twig) {
+                try {
+                    $twig->render(array());
+                } catch (\Twig\Error\RuntimeError $e) {
+                    throw $e->getPrevio</code></blockquote> </div>

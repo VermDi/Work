@@ -1,0 +1,26 @@
+#users tbody tr:hover{
+    cursor: pointer;
+}
+.button-control-user{
+    display: inline-block;
+    position: relative;
+
+}
+
+.button-control-user:hover::after {
+    content: attr(data-title);
+    position: absolute; /* Абсолютное позиционирование */
+    left: 0; top: -150%; /* Положение подсказки */
+    z-index: 1; /* Отображаем подсказку поверх других элементов */
+    background: rgba(255,255,230,0.9); /* Полупрозрачный цвет фона */
+    font-family: Arial, sans-serif; /* Гарнитура шрифта */
+    font-size: 11px; /* Размер текста подсказки */
+    padding: 5px 10px; /* Поля */
+    border: 1px solid #333; /* Параметры рамки */
+}
+.table th:after{
+    bottom: 4px !important;
+}
+.control-buttons{
+    margin-top: 5px;
+}

@@ -1,0 +1,54 @@
+# Версия docker-compose
+version: '2.2'
+# Список наших сервисов (контейнеров)
+services:
+  nginx:
+    # используем последний стабильный образ nginx
+    image: nginx:latest
+    # маршрутизируем порты
+    ports:
+      - "80:80"
+      - "443:443"
+    expose:
+      - "80"
+    # монтируем директории, слева директории на основной машине, справа - куда они монтируются в контейнере
+    volumes:
+      # конфа для nginx
+      - ./nginx/conf:/etc/nginx/conf.d
+      # логи
+      - ./nginx/logs:/var/log/nginx
+      # основная директория
+      - ./../www:/var/www
+      # системная
+      - ./../system:/var/system
+      # nginx должен общаться с php контейнером
+    links:
+      - php
+  php:
+    # у нас свой образ для PHP, указываем путь к нему и говорим что его надо собрать
+    build: ./php7.4-fpm
+    # этот образ будет общаться с mysql
+    links:
+      - mysql
+    # монтируем директорию с проектами
+    volumes:
+      - ./../www:/var/www
+      - ./../system:/var/system
+      - ./php7.4-fpm/defines-docker-example.php :/var/system/defines-local.php
+    ports:
+      - "9000:9000"
+
+  mysql:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    container_name: mysql
+    # Пропишем настройки, предлагаю использовать вместо mypassword более сложный пароль, он пренадлежит root
+    environment:
+        - MYSQL_ROOT_PASSWORD=root!Q@W3
+        - MYSQL_DATABASE=master
+        - MYSQL_USER=user
+        - MYSQL_PASSWORD=User!Q@W3
+    volumes:
+        - ./mysql:/var/lib/mysql
+        - ./mysql.cnf:/etc/mysql/conf.d/custom.cnf

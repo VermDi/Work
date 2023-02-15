@@ -1,0 +1,25 @@
+#email{
+    border-radius: 3px;
+}
+
+.blocked{
+    margin-left: 5.3%;
+}
+.add-user{
+    margin-left: 7.1%;
+}
+.user-group .checkbox:first-child{
+    margin-top: 0;
+}
+
+.user-group .checkbox label{
+    padding-left: 2px;
+}
+
+.form-group .checkbox {
+    margin-left: 130px !important;
+}
+
+#genPass{
+    line-height: 20px !important;
+}

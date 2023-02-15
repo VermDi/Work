@@ -1,0 +1,15 @@
+#file_list li {
+    list-style-type: none;
+}
+
+#file_list li:hover {
+    list-style-type: none;
+
+    border-radius: 3px;
+    background-color: #F1F2F7;
+}
+
+textarea {
+    height: 100%;
+}
+.img-polaroid {border: 1px solid #F1F2F7; padding: 7px;}

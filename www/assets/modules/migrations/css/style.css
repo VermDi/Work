@@ -1,0 +1,19 @@
+.result{
+    position: relative;
+}
+.error{
+    display: none;
+    position: absolute;
+    top:22px;
+    left: -45px;
+    border: 1px solid lightgrey;
+    border-radius: 6px;
+    background-color: white;
+    z-index: 100;
+    padding: 10px;
+    width: 250px;
+}
+.viewError{
+    text-decoration: underline;
+    cursor: pointer;
+}

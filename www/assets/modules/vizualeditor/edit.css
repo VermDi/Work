@@ -1,0 +1,71 @@
+.editzone { outline: 1px solid #999977;}
+.editzone:hover {
+    outline: 1px solid #FB8242;
+    z-index: auto;
+}
+
+.editbutton {
+    display: none;
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    z-index: 999999;
+    left: 0px;
+    border: 1px solid #000;
+    background-image: url("/assets/modules/vizualeditor/pen.png");
+    cursor: pointer;
+}
+
+.editzone:hover .editbutton {
+    display: block;
+}
+
+.emind_admin_rules {
+    z-index: 99999999;
+    position: fixed;
+    top: 0px;
+    background-color: #ffffff;
+    width: 100%;
+    height: 35px;
+    border-bottom: 2px solid #a9a9a9;
+    padding: 7px;
+    background-image: url("/assets/modules/vizualeditor/logo.png");
+    background-position: 25px;
+    background-repeat: no-repeat;
+    padding-left: 150px;
+}
+
+body {
+    padding-top: 40px;
+}    .onoffswitch {
+        position: relative; width: 50px;
+        -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+    }
+    .onoffswitch-checkbox {
+        display: none;
+    }
+    .onoffswitch-label {
+        display: block; overflow: hidden; cursor: pointer;
+        height: 20px; padding: 0; line-height: 20px;
+        border: 2px solid #999999; border-radius: 20px;
+        background-color: #B81B1B;
+        transition: background-color 0.3s ease-in;
+    }
+    .onoffswitch-label:before {
+        content: "";
+        display: block; width: 20px; margin: 0px;
+        background: #FFFFFF;
+        position: absolute; top: 0; bottom: 0;
+        right: 28px;
+        border: 2px solid #999999; border-radius: 20px;
+        transition: all 0.3s ease-in 0s;
+    }
+    .onoffswitch-checkbox:checked + .onoffswitch-label {
+        background-color: #34C268;
+    }
+    .onoffswitch-checkbox:checked + .onoffswitch-label, .onoffswitch-checkbox:checked + .onoffswitch-label:before {
+       border-color: #34C268;
+    }
+    .onoffswitch-checkbox:checked + .onoffswitch-label:before {
+        right: 0px;
+    }

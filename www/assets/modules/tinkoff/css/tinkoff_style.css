@@ -1,0 +1,45 @@
+.tinkoff_img_box{
+    display: flex;
+    margin-bottom: 20px;
+}
+.tinkoff_img_box img {
+    cursor: pointer;
+    width: 90%;
+    margin-right: 10px;
+    -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+    box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+}
+.image_hover{
+    -webkit-transform:scale(1); /* Safari and Chrome */
+    -moz-transform:scale(1); /* Firefox */
+    -ms-transform:scale(1); /* IE 9 */
+    -o-transform:scale(1); /* Opera */
+    transform:scale(1);
+    -webkit-transition:transform 0.25s ease; /* Safari and Chrome */
+    -moz-transition:transform 0.25s ease; /* Firefox */
+    -ms-transition:transform 0.25s ease; /* IE 9 */
+    -o-transition:transform 0.25s ease; /* Opera */
+    transition:transform 0.25s ease;
+    max-width: 50%;
+    top: 300px;
+    z-index: 10;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto !important;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+.manual_tinkoff_cred{
+    margin-bottom: 20px
+}
+.manual_tinkoff_cred .manual_tinkoff_box{
+    font-size: 14px;line-height: 22px;
+}
+.manual_tinkoff_box pre{
+    max-width: 700px;
+}
+.manual_pre_item1{
+    text-align: center;
+}
