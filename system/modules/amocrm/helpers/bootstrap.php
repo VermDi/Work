@@ -9,11 +9,11 @@ include_once __DIR__ . '/../vendor/autoload.php';
 //$dotenv = new Dotenv();
 //$dotenv->load(__DIR__ . '/.env.dist', __DIR__ . '/.env');
 
-$settings = AmoCrmSettings::instance()->getOne(1);
+$settings = AmoCrmSettings::instance()->get();
 
-$clientId = $settings['client_id'];
-$clientSecret = $settings['client_secret'];
-$redirectUri = $settings['redirect_url'];
+$clientId = $settings->client_id;
+$clientSecret = $settings->client_secret;
+$redirectUri = $settings->redirect_url;
 
 $apiClient = new AmoCRMApiClient($clientId, $clientSecret, $redirectUri);
 

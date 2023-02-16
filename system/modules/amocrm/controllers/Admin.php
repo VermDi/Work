@@ -46,7 +46,7 @@ class Admin extends Controller
 	public function actionIndex()
 	{
 
-		$data = AmoCrmSettings::instance()->getOne(1);
+		$data = AmoCrmSettings::instance()->get();
 
 		$this->html->title = 'Настройка подключения AmoCRM';
 		$this->html->content = $this->render('Index.php', $data);
@@ -56,7 +56,6 @@ class Admin extends Controller
 	public function actionSettings()
 	{
 		$data = $_POST;
-		$data['id'] = 1;
 
 		if (AmoCrmSettings::instance()->save($data)) {
             return json_encode(['error' => 0, 'message'=>'Успешное сохранение']);
@@ -73,10 +72,11 @@ class Admin extends Controller
 		$customFieldsService = $apiClient->customFields(EntityTypesInterface::LEADS);
 		$category = Amo::LEADS_FIELD;
 		$data_leads = $customFieldsService->get()->toArray();
-
-		$data = AmoCrmFields::instance()->getAllByParams(['category' => $category]);
-		$data_items = AmoCRMFieldsItems::instance()->getAll();
-
+echo"<pre>";print_r($category);echo"</pre>";
+		$data = AmoCrmFields::instance()->select('*')->where('category','=',$category)->getAll();
+    	$data_items = AmoCRMFieldsItems::instance()->getAll();
+echo"<pre>";print_r($data_items);echo"</pre>";
+die('ok');
 		$arr_amo = [];
 		foreach ($data_leads as $row) {
 			$arr_amo[] .= $row['id'];
@@ -84,20 +84,21 @@ class Admin extends Controller
 
 		$arr_data = [];
 		foreach ($data as $row) {
-			$arr_data[] .= $row['id_field'];
+			$arr_data[] .= $row->id_field;
 		}
 
 		$arr_res = array_diff($arr_data, $arr_amo);
 		if (!empty($arr_res)) {
-			AmoCrmFields::DeleteField($arr_res);
+			(new \modules\amocrm\models\AmoCrmFields)->DeleteField($arr_res);
 		}
 
 		$dataNew = [];
 		foreach ($data_leads as $Row) {
 			$dataNew['id'] = '';
 			foreach ($data as $Row_data) {
-				if (isset($Row_data['id']) && $Row_data['id_field'] == $Row['id']) {
-					$dataNew['id'] = $Row_data['id'];
+
+				if (isset($Row_data->id) && $Row_data->id_field == $Row['id']) {
+					$dataNew['id'] = $Row_data->id;
 				}
 			}
 			$dataNew['name'] = $Row['name'];

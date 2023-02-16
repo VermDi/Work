@@ -36,6 +36,19 @@ ENGINE=InnoDB
 AUTO_INCREMENT=9
 ;
 ");
+
+        $this->query("CREATE TABLE `amocrm_fields_items` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`id_field` INT(11) NOT NULL ,
+	`p_id` INT(11) NOT NULL,
+	`value` VARCHAR(255) NOT NULL,
+	PRIMARY KEY (`id`)
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=9
+;
+");
         if (class_exists('\modules\menu\services\MenuActions')) {
             \modules\menu\services\MenuActions::addInAdminMenu('/amocrm/admin', 'AmoCrm');
         }

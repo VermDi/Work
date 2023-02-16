@@ -45,9 +45,10 @@ include_once __DIR__ . '/../templates/menu.php';
 	<form method="post" class="form-amocrm">
 		<div style="display: flex; flex-direction: column;">
 			<div class="form-group">
+                <input value="<?= isset($data->id) ? $data->id : '' ?>" type="hidden" name="id">
 				<label class="col-sm-2 control-label" for="title">ID Интеграции:</label>
 				<div class="col-sm-7">
-					<input value="<?= isset($data['client_id']) ? $data['client_id'] : '' ?>" type="text"
+					<input value="<?= isset($data->client_id) ? $data->client_id : '' ?>" type="text"
 						   name="client_id"
 						   placeholder="Введите ID Интеграции" class="form-control">
 				</div>
@@ -55,7 +56,7 @@ include_once __DIR__ . '/../templates/menu.php';
 			<div class="form-group">
 				<label class="col-sm-2 control-label" for="title">Секретный ключ:</label>
 				<div class="col-sm-7">
-					<input value="<?= isset($data['client_secret']) ? $data['client_secret'] : '' ?>" type="text"
+					<input value="<?= isset($data->client_secret) ? $data->client_secret : '' ?>" type="text"
 						   name="client_secret"
 						   placeholder="Введите Секретный ключ" class="form-control">
 				</div>
@@ -63,7 +64,7 @@ include_once __DIR__ . '/../templates/menu.php';
 			<div class="form-group">
 				<label class="col-sm-2 control-label" for="title">Redirect URL:</label>
 				<div class="col-sm-7">
-					<input value="<?= isset($data['redirect_url']) ? $data['redirect_url'] : '' ?>" type="text"
+					<input value="<?= isset($data->redirect_url) ? $data->redirect_url : '' ?>" type="text"
 						   name="redirect_url"
 						   placeholder="Введите Redirect URL" class="form-control">
 				</div>
