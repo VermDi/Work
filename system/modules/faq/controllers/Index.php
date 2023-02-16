@@ -24,13 +24,13 @@ class Index extends Controller
         $data = [];
         $data['Questions'] = mQuestions::instance()->getQuestions(['orderBy'=>'id DESC','status'=>1]);
 
-        html()->setJs('//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js');
-        html()->setCss('//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css');
+        html()->setCss('https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css');
+        html()->setJs('https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js');
         Html::instance()->setJs("/assets/modules/faq/js/faq.js");
 
 
         Html::instance()->title = 'FAQ';
-echo"<pre>";print_r($this->config);echo"</pre>";
+
         Html::instance()->content = $this->render("/front/List.php", $data);
         Html::instance()->renderTemplate($this->config['MainTemplate'])->show();
     }

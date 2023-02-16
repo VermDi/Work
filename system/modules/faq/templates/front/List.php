@@ -1,4 +1,6 @@
-
+<?php
+echo"<pre>";print_r('ss');echo"</pre>";
+?>
 <section class="pb_section pb_slant-white" id="section-faq">
     <div class="container">
         <div class="row justify-content-center mb-5">
