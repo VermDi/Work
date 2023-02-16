@@ -42,14 +42,12 @@ class AmoCrmFields extends Model
     public function DeleteField($field_id, $items = false)
     {
         if (is_array($field_id) && count($field_id) > 0) {
-            $arrRow = [];
             foreach ($field_id as $key => $val) {
-                $arrRow[] .= $val;
+                $this->delete(['id_field' => $val]);// удалить
             }
-            $Id_fields = ' IN (' . implode(',', $arrRow) . ') ';
         }
 
-        $this->delete(['id_field' => $Id_fields]);// удалить
+
     }
 
 

@@ -3,10 +3,10 @@
 	<div class="panel-heading clearfix">
 		<h5 class="pull-left text-uppercase">Редактирование поля CRM</h5>
 	</div>
-	<form method="post" action="/amocrm/admin/edit/<?= $data['field']['id'] ?>" class="form_edit_field">
+	<form method="post" action="/amocrm/admin/edit/<?= $data['field']->id ?>" class="form_edit_field">
 		<div style="display: flex; flex-direction: column;">
 			<input type="hidden" value="<?= isset($data['lead']['id']) ? $data['lead']['id'] : '' ?>">
-			<input type="hidden" value="<?= isset($data['field']['id']) ? $data['field']['id'] : '' ?>" name="field_id">
+			<input type="hidden" value="<?= isset($data['field']->id) ? $data['field']->id : '' ?>" name="field_id">
 			<div class="form-group">
 				<label class="col-sm-2 control-label" for="title">Имя в AmoCRM:</label>
 				<div class="col-sm-6">
@@ -19,7 +19,7 @@
 			<div class="form-group">
 				<label class="col-sm-2 control-label" for="title">Имя поля в form на проекте:</label>
 				<div class="col-sm-6">
-					<input value="<?= isset($data['field']['name_in_form']) ? $data['field']['name_in_form'] : '' ?>"
+					<input value="<?= isset($data['field']->name_in_form) ? $data['field']->name_in_form : '' ?>"
 						   type="text" name="name_in_form"
 						   placeholder="Введите имя поле в form" class="form-control">
 					<dev><b>*</b>Имя поля в form <b>(name= "")</b>, а так же ключ в массиве для отправки данных по API<br></dev>

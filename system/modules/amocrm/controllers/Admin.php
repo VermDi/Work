@@ -72,11 +72,10 @@ class Admin extends Controller
 		$customFieldsService = $apiClient->customFields(EntityTypesInterface::LEADS);
 		$category = Amo::LEADS_FIELD;
 		$data_leads = $customFieldsService->get()->toArray();
-echo"<pre>";print_r($category);echo"</pre>";
+
 		$data = AmoCrmFields::instance()->select('*')->where('category','=',$category)->getAll();
     	$data_items = AmoCRMFieldsItems::instance()->getAll();
-echo"<pre>";print_r($data_items);echo"</pre>";
-die('ok');
+
 		$arr_amo = [];
 		foreach ($data_leads as $row) {
 			$arr_amo[] .= $row['id'];
@@ -101,11 +100,12 @@ die('ok');
 					$dataNew['id'] = $Row_data->id;
 				}
 			}
+
 			$dataNew['name'] = $Row['name'];
 			$dataNew['type'] = $Row['type'];
 			$dataNew['is_api_only'] = $Row['is_api_only'];
-			if ($Row['is_api_only'] == null) {
-				$dataNew['is_api_only'] = 2;
+			if (isset($Row['is_api_only']) && $Row['is_api_only'] == 1 ) {
+				$dataNew['is_api_only'] = 1;
 			}
 			$dataNew['id_field'] = $Row['id'];
 			$dataNew['category'] = $category;
@@ -133,8 +133,7 @@ die('ok');
 		$customFieldsService = $apiClient->customFields(EntityTypesInterface::CONTACTS);
 		$category = Amo::CONTACT_FIELD;
 		$data_contacts = $customFieldsService->get()->toArray();
-		$ContactsInfo = AmoCrmFields::instance()->getAllByParams(['category' => $category]);
-
+		$ContactsInfo = AmoCrmFields::instance()->select('*')->where('category','=',$category)->getAll();
 		$arr_amo = [];
 		foreach ($data_contacts as $row) {
 			$arr_amo[] .= $row['id'];
@@ -142,28 +141,28 @@ die('ok');
 
 		$arr_data = [];
 		foreach ($ContactsInfo as $row) {
-			$arr_data[] .= $row['id_field'];
+			$arr_data[] .= $row->id_field;
 		}
 
 		$arr_res = array_diff($arr_data, $arr_amo);
 		if (!empty($arr_res)) {
-			AmoCrmFields::DeleteField($arr_res);
+			(new \modules\amocrm\models\AmoCrmFields)->DeleteField($arr_res);
 		}
 
 		$dataNew = [];
 		foreach ($data_contacts as $Row) {
 			$dataNew['id'] = '';
 			foreach ($ContactsInfo as $Row_Info) {
-				if (isset($Row_Info['id']) && $Row_Info['id_field'] == $Row['id']) {
-					$dataNew['id'] = $Row_Info['id'];
+				if (isset($Row_Info->id) && $Row_Info->id_field == $Row['id']) {
+					$dataNew['id'] = $Row_Info->id;
 				}
 			}
 			$dataNew['name'] = $Row['name'];
 			$dataNew['type'] = $Row['type'];
 			$dataNew['is_api_only'] = $Row['is_api_only'];
-			if ($Row['is_api_only'] == null) {
-				$dataNew['is_api_only'] = 2;
-			}
+            if (isset($Row['is_api_only']) && $Row['is_api_only'] == 1 ) {
+                $dataNew['is_api_only'] = 1;
+            }
 			$dataNew['id_field'] = $Row['id'];
 			$dataNew['category'] = $category;
 			$dataNew['code'] = $Row['code'];
@@ -197,7 +196,7 @@ die('ok');
 				$_POST['is_api_only'] = 1;
 			} else {
 				$api = false;
-				$_POST['is_api_only'] = 2;
+				$_POST['is_api_only'] = null;
 			}
 
 			if ($_POST['type'] == 'text') {
@@ -233,6 +232,7 @@ die('ok');
 			$dataNew['category'] = $_POST['category'];
 			$dataNew['name_in_form'] = $_POST['name_in_form'];
 			$dataNew['is_api_only'] = $_POST['is_api_only'];
+
 			AmoCrmFields::instance()->save($dataNew);
 
 			header("Location: /amocrm/admin/fields");
@@ -246,17 +246,17 @@ die('ok');
 
 	public function actionEdit($id)
 	{
-		$field = AmoCrmFields::instance()->getOne($id);
+		$field = AmoCrmFields::instance()->select('*')->where('id','=',$id)->get();
 
 		$apiClient = Amo::instance()->authCrm();
 		$leadsCfService = $apiClient->customFields(EntityTypesInterface::LEADS);
 
-		if ($field['category'] == 2) {
+		if ($field->category == 2) {
 			$leadsCfService = $apiClient->customFields(EntityTypesInterface::CONTACTS);
 		}
 
 		$leadsCfCollection = $leadsCfService->get();
-		$leadsCfModel = $leadsCfCollection->getBy('name', $field['name']);
+		$leadsCfModel = $leadsCfCollection->getBy('name', $field->name);
 		if (empty($_POST)) {
 			$lead = $leadsCfModel->toArray();
 		}
@@ -310,7 +310,7 @@ die('ok');
 
 			} else {
 				$leadsCfCollection = $leadsCfService->get();
-				$leadsCfModel = $leadsCfCollection->getBy('name', $field['name']);
+				$leadsCfModel = $leadsCfCollection->getBy('name', $field->name);
 				$leadsCfModel->setName($_POST['name']);
 				$leadsCfModel->setIsApiOnly($api);
 				$leadsCfService->updateOne($leadsCfModel);
@@ -344,22 +344,22 @@ die('ok');
 
 	public function actionDelete($id)
 	{
-		$field = AmoCrmFields::instance()->getOne($id);
+		$field = AmoCrmFields::instance()->select('*')->where('id','=',$id)->get();
 
 		$apiClient = Amo::instance()->authCrm();
 		$CfService = $apiClient->customFields(EntityTypesInterface::LEADS);
 
-		if ($field['category'] == 2) {
+		if ($field->category == 2) {
 			$CfService = $apiClient->customFields(EntityTypesInterface::CONTACTS);
 		}
 
 		$leadsCfCollection = $CfService->get();
 
-		$fieldToDelete = $leadsCfCollection->getBy('name', $field['name']);
+		$fieldToDelete = $leadsCfCollection->getBy('name', $field->name);
 		$data = $fieldToDelete->toArray();
 
 		if ($fieldToDelete) {
-			AmoCrmFields::DeleteField([$data['id']]);
+			(new \modules\amocrm\models\AmoCrmFields)->DeleteField([$data['id']]);
 
 			$CfService->deleteOne($fieldToDelete);
 		}
