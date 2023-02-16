@@ -1,36 +1,35 @@
 <?
-$dataSettings = \modules\tinkoff\models\TinkoffSettingsButton::instance()->getOne(1);
+$dataSettings = \modules\tinkoff\models\TinkoffSettingsButton::instance()->getOne();
 $items = $data;
-echo "<pre>";
-print_r($dataSettings);
-echo "</pre>";
+//echo "<pre>";
+//print_r($dataSettings);
+//echo "</pre>";
 echo "<pre>";
 print_r($items);
 echo "</pre>";
-
 if (!empty($dataSettings)) {
 
-	$sum = 0;
+    $sum = 0;
 
-	$data[0] = ['name', 'price', 'quantity'];
-	foreach ($items as $key => $value) {
-		$piceItem = (int)$value['price'] * (int)$value['quantity'];
-		$sum += $piceItem;
-		$data[$key + 1] = [$value['name']];
-		array_push($data[$key + 1], $value['price']);
-		array_push($data[$key + 1], $value['quantity']);
-	}
+    $data[0] = ['name', 'price', 'quantity'];
+    foreach ($items as $key => $value) {
+        $piceItem = (int)$value['price'] * (int)$value['quantity'];
+        $sum += $piceItem;
+        $data[$key + 1] = [$value['name']];
+        array_push($data[$key + 1], $value['price']);
+        array_push($data[$key + 1], $value['quantity']);
+    }
 
-	$resultButton = "
+    $resultButton = "
+	<script src='https://forma.tinkoff.ru/static/onlineScript.js'></script>
 	<input type='hidden' id='dataArr' value='" . json_encode($data) . "'/>
 	<button
 	type='button'
-	class='TINKOFF_BTN_YELLOW " . $dataSettings['buttonStyle'] . " credTinkoff'
->" . $dataSettings['buttonName'] . "</button>
+	class='TINKOFF_BTN_YELLOW " . $dataSettings->buttonStyle . " credTinkoff'
+>" . $dataSettings->buttonName . "</button>
 <script>
 
 let btnCredTinkoff = document.querySelector('.credTinkoff')
-let dataArr = JSON.parse(document.querySelector('#dataArr').value)
 
 	function convertToArrayOfObjects(data) {
 		let keys = data.shift(),
@@ -52,18 +51,19 @@ let dataArr = JSON.parse(document.querySelector('#dataArr').value)
 	}
 
 	function credClick() {
-   
-		let data = convertToArrayOfObjects(dataArr)
+    
+       let dataArr = JSON.parse(document.querySelector('#dataArr').value)
+       let data = convertToArrayOfObjects(dataArr)
 
 		tinkoff.createDemo(
 			{
 				sum: " . $sum . ",
 				items: data,
-				promoCode: '" . $dataSettings['promoCode'] . "',
-				shopId: '" . $dataSettings['SHOP_ID'] . "',
-				showcaseId: '" . $dataSettings['SHOWCASE_ID'] . "',
+				promoCode: '" . $dataSettings->promoCode . "',
+				shopId: '" . $dataSettings->SHOP_ID . "',
+				showcaseId: '" . $dataSettings->SHOWCASE_ID . "',
 			},
-			{view: '" . $dataSettings['view'] . "'}
+			{view: '" . $dataSettings->view . "'}
 		)
 	}
 	
@@ -71,9 +71,9 @@ let dataArr = JSON.parse(document.querySelector('#dataArr').value)
 	
 </script>";
 
-	echo $resultButton;
+    echo $resultButton;
 } else {
-	echo 'Заполните Поля в настройках подключения Кредитования в Админ панели';
+    echo 'Заполните Поля в настройках подключения Кредитования в Админ панели';
 }
 
 

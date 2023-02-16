@@ -1,5 +1,4 @@
-<?php
-?>
+
 <section>
 	<div class="panel-heading clearfix">
 		<h5 class="pull-left text-uppercase">Редактирование поля CRM</h5>

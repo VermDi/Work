@@ -136,7 +136,7 @@ class Amo extends Controller
 	{
 		$apiClient = $this->authCrm();
 
-		$fieldsArr = AmoCrmFields::instance()->getAllByParams(['category' => 1]);
+		$fieldsArr = AmoCrmFields::instance()->getAll(['category' => 1]);
 
 		$data_leads = [];
 		foreach ($fieldsArr as $Row) {

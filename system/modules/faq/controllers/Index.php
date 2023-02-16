@@ -9,6 +9,7 @@ use modules\faq\models\mAnswers;
 use modules\faq\models\mQuestions;
 use modules\faq\services\sFAQ;
 use modules\user\models\USER;
+use function mysql_xdevapi\expression;
 
 class Index extends Controller
 {
@@ -29,7 +30,7 @@ class Index extends Controller
 
 
         Html::instance()->title = 'FAQ';
-
+echo"<pre>";print_r($this->config);echo"</pre>";
         Html::instance()->content = $this->render("/front/List.php", $data);
         Html::instance()->renderTemplate($this->config['MainTemplate'])->show();
     }

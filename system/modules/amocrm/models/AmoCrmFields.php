@@ -24,4 +24,5 @@ class AmoCrmFields extends Model
 		App::db()->getPdo()->query("DELETE FROM amocrm_fields WHERE  id_field" . $Id_fields); // удалить опросы
 
 	}
+
 }

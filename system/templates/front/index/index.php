@@ -20,7 +20,7 @@
 <div class="navbar navbar-default navbar-fixed-top">
 
     <div class="navbar-header">
-        <a href="/" class="navbar-brand">TOOLS</a>
+        <a href="/" class="navbar-brand">Тестовый проект</a>
         <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -45,7 +45,24 @@
     <div class="wrapper">
         <?= \core\Html::instance()->content; ?>
     </div>
-
+    <? $data = [
+        [
+            'name'     => 'iphone 11',
+            'price'    => 120000,
+            'quantity' => 1,
+        ],
+        [
+            'name'  => 'Чехол',
+            'price' => 500,
+            'quantity' => 1,
+        ],
+        [
+            'name'     => 'Зарядка для iphone 11',
+            'price'    => 1500,
+            'quantity' => 2,
+        ],
+    ];
+    \modules\tinkoff\widgets\tinkoffButton::instance()->getTinkoffButton($data); ?>
     <div id="source-modal" class="modal fade">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
