@@ -17,7 +17,6 @@ use modules\amocrm\models\AmoCrmFields;
 use core\Html;
 use modules\amocrm\models\AmoCRMFieldsItems;
 use modules\amocrm\models\AmoCrmSettings;
-use modules\user_diet_extension\models\User_diet_extension;
 use function mysql_xdevapi\expression;
 
 class Admin extends Controller
