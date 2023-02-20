@@ -1,7 +1,8 @@
-.amo_img_box{
+.amo_img_box {
     display: flex;
     margin-bottom: 20px;
 }
+
 .amo_img_box img {
     cursor: pointer;
     width: 90%;
@@ -10,17 +11,18 @@
     -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
     box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
 }
-.image_hover{
-    -webkit-transform:scale(2); /* Safari and Chrome */
-    -moz-transform:scale(2); /* Firefox */
-    -ms-transform:scale(2); /* IE 9 */
-    -o-transform:scale(2); /* Opera */
-    transform:scale(2);
-    -webkit-transition:transform 0.25s ease; /* Safari and Chrome */
-    -moz-transition:transform 0.25s ease; /* Firefox */
-    -ms-transition:transform 0.25s ease; /* IE 9 */
-    -o-transition:transform 0.25s ease; /* Opera */
-    transition:transform 0.25s ease;
+
+.image_hover {
+    -webkit-transform: scale(2); /* Safari and Chrome */
+    -moz-transform: scale(2); /* Firefox */
+    -ms-transform: scale(2); /* IE 9 */
+    -o-transform: scale(2); /* Opera */
+    transform: scale(2);
+    -webkit-transition: transform 0.25s ease; /* Safari and Chrome */
+    -moz-transition: transform 0.25s ease; /* Firefox */
+    -ms-transition: transform 0.25s ease; /* IE 9 */
+    -o-transition: transform 0.25s ease; /* Opera */
+    transition: transform 0.25s ease;
     max-width: 50%;
     top: 300px;
     z-index: 10;
@@ -30,4 +32,8 @@
     left: 0;
     right: 0;
     text-align: center;
+}
+
+.amo_fields_a > a {
+    margin-right: 5px;
 }
